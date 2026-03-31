@@ -1,11 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Row, Col, Card, Button, Form, InputGroup } from 'react-bootstrap'
 
 import NavbarComponent from '../components/NavbarComponent'
 import InfoComponent from '../components/InfoComponent'
 import FooterComponent from '../components/FooterComponent'
 
+import {API_ENDPOINT} from '../../Api.jsx'
+
 function QRGenerator() {
+  const [url, setUrl] = useState('')
+
   return (
     <div style={{ 
       height: '100vh', 

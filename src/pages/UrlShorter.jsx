@@ -1,11 +1,33 @@
-import React from 'react'
-import { Row, Col, Card, Button, Form, InputGroup } from 'react-bootstrap'
-
+import React, { useState } from 'react'
+import { Row, Col, Card, Button, Form, InputGroup, Spinner } from 'react-bootstrap'
+import axios from 'axios'
 import NavbarComponent from '../components/NavbarComponent'
 import InfoComponent from '../components/InfoComponent'
 import FooterComponent from '../components/FooterComponent'
 
+import { API_ENDPOINT } from '../../Api.jsx'
+
 function UrlShorter() {
+  
+  const [url, SetUrl] = useState('')
+  const [shortUrl, setShortUrl] = useState('')
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  const handleLinkShrinker = async () => {
+    
+    setLoading(true)
+    try {
+      const response = await axios.post(`${API_ENDPOINT}/short`,{
+        url
+      });
+      setShortUrl(response.data.url)
+    } catch {
+      setError('Unknown error occured')
+    } finally{
+      setLoading(false)
+    }
+  }
   return (
     <div style={{ 
       height: '100vh', 
@@ -34,15 +56,51 @@ function UrlShorter() {
                 width:'100%'}}>
               <InputGroup style={{ width: '100%' }}>
                 
-                <Form.Control style={{
+                <Form.Control value={url} onChange={(e) => SetUrl(e.target.value)} style={{
                   lineHeight:3}} type="text" placeholder="Enter link here" />
-                <Button>
+                <Button disabled={loading} onClick={() => {
+                  handleLinkShrinker()
+                }}>
                   Shrink it
                 </Button>
 
               </InputGroup>
+
+              {error && <>
+              <span style={{color:'red'}}>{error}</span>
+              </>}
               
               <br />
+
+              {loading && (
+                <div style={{width:'100%', height:'100%' ,display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
+                  <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </Spinner>
+                  <span>Processing.. Please wait</span>
+                </div>
+            )}
+
+              
+              {(shortUrl && !loading) &&
+                (<>
+                  <Card style={{
+                    minHeight:'100px'}}>
+                    <span style={{
+                      fontSize:20,
+                      fontWeight:'bold',
+                      textAlign:'center'
+                    }}>Your shorten link is: </span>
+
+                    <a href={shortUrl.startsWith('http') ? shortUrl : `https://${shortUrl}`} 
+                      target="_blank" 
+                      rel="noreferrer" style={{
+                      fontSize:24,
+                      textAlign:'center'
+                    }}> {shortUrl} </a>
+                  </Card>
+                </>)}
+              
 
               <p style={{
                 textAlign:'center', 
@@ -64,9 +122,7 @@ function UrlShorter() {
       </div>
 
     </div>
-
-    
-    
+  
   )
 }
 
