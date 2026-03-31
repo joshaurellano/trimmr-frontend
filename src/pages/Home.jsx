@@ -6,6 +6,8 @@ import { FaPaperclip } from "react-icons/fa";
 import { BsQrCodeScan } from "react-icons/bs";
 
 import NavbarComponent from '../components/NavbarComponent'
+import InfoComponent from '../components/InfoComponent';
+import FooterComponent from '../components/FooterComponent';
 
 
 
@@ -22,6 +24,14 @@ function Home() {
 
       <div className='container'>
         <Row className='justify-content-center' style={{ gap: '1rem' }}>
+          <div style={{textAlign:'center', marginBottom:'20px'}}>
+            <h1 style={{
+              fontWeight:'bold'
+            }}>Where every link tells a story</h1>
+
+            <span>Shorten URLs, generate custom QR codes, and track every chapter of your brand’s journey in <br /> one powerful platform</span>
+          </div>
+          
           <Col xs='auto'>
 
           {/* For URL shorter  */}
@@ -133,7 +143,14 @@ function Home() {
                 
             </Card>
           </Col>
+
+          <div>
+            <InfoComponent />
+          </div>
         </Row>
+      </div>
+      <div>
+        <FooterComponent />
       </div>
     </div>
   )

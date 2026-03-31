@@ -4,7 +4,7 @@ function NavbarComponent() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home" style={{
+        <Navbar.Brand href="/" style={{
           fontWeight:'bold'
         }}>Trimmr</Navbar.Brand>
         
