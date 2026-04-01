@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Row, Col, Card, Button, Form, InputGroup, Spinner } from 'react-bootstrap'
 import axios from 'axios'
 import NavbarComponent from '../components/NavbarComponent'
 import InfoComponent from '../components/InfoComponent'
 import FooterComponent from '../components/FooterComponent'
+
+import { MdOutlineContentCopy } from "react-icons/md";
 
 import { API_ENDPOINT } from '../../Api.jsx'
 
@@ -13,6 +15,7 @@ function UrlShorter() {
   const [shortUrl, setShortUrl] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [copied, setCopied] = useState(false)
 
   const handleLinkShrinker = async () => {
     
@@ -40,6 +43,14 @@ function UrlShorter() {
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    if (copied) {
+      const timer = setTimeout(() => setCopied(false), 2000)
+      return () => clearTimeout(timer)
+    }
+  }, [copied])
+
   return (
     <div style={{ 
       height: '100vh', 
@@ -104,12 +115,35 @@ function UrlShorter() {
                       textAlign:'center'
                     }}>Your shorten link is: </span>
 
-                    <a href={shortUrl.startsWith('http') ? shortUrl : `https://${shortUrl}`} 
+                    <InputGroup>
+                      <Form.Control
+                        readOnly
+                        value={shortUrl}
+                        style={{ 
+                          fontSize: 18,
+                          border: 'none',
+                          boxShadow: 'none',
+                          backgroundColor: 'transparent',
+                          textAlign: 'center'
+                        }}
+                      />
+                      <InputGroup.Text
+                        onClick={() => navigator.clipboard.writeText(shortUrl).then(() => setCopied(true))}
+                        style={{ cursor: 'pointer', backgroundColor: 'transparent', border: 'none' }}
+                        title="Copy to clipboard"
+                      >
+                        {copied ? '✅' : <MdOutlineContentCopy size={20} />}
+                      </InputGroup.Text>
+                    </InputGroup>
+
+                    {/* <a href={shortUrl.startsWith('http') ? shortUrl : `https://${shortUrl}`} 
                       target="_blank" 
                       rel="noreferrer" style={{
                       fontSize:24,
                       textAlign:'center'
-                    }}> {shortUrl} </a>
+                    }}> {shortUrl} </a> */}
+
+                    
                   </Card>
                 </>)}
               
