@@ -16,14 +16,26 @@ function UrlShorter() {
 
   const handleLinkShrinker = async () => {
     
+    setShortUrl('')
+    setError('')
     setLoading(true)
     try {
       const response = await axios.post(`${API_ENDPOINT}/short`,{
         url
       });
       setShortUrl(response.data.url)
-    } catch {
-      setError('Unknown error occured')
+    } catch (error) {
+      if (error.response && error.response.data instanceof Blob) {
+        const text = await error.response.data.text()
+        try {
+          const json = JSON.parse(text)
+          setError(json.detail || json.message || 'Unknown error occurred')
+        } catch {
+          setError(text || 'Unknown error occurred')
+        }
+      } else {
+        setError('Unknown error occurred')
+      }
     } finally{
       setLoading(false)
     }
