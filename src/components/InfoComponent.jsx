@@ -1,14 +1,14 @@
 import React from 'react'
 import { Row, Col } from 'react-bootstrap'
-import { FiScissors, FiLock, FiBarChart2, FiShield, FiSmartphone, FiGrid } from 'react-icons/fi'
+import { FiScissors, FiShield, FiSmartphone, FiGrid, FiEyeOff  } from 'react-icons/fi'
 import { TfiBolt } from "react-icons/tfi";
 
 const features = [
   { icon: <TfiBolt />, title: 'Easy', desc: 'Paste your long link and get a shortened URL in seconds.' },
   { icon: <FiScissors />, title: 'Shortened', desc: 'Use any link, no matter what size, we always shorten it.' },
   { icon: <FiGrid />, title: 'QR Code', desc: 'Generate a QR code for any URL instantly — no account needed.' },
-  { icon: <FiLock />, title: 'Secure', desc: 'Fast and secure with HTTPS protocol and data encryption.' },
-  { icon: <FiBarChart2 />, title: 'Statistics', desc: 'Track the number of clicks your shortened URL received.' },
+  { icon: <FiEyeOff />, title: 'Privacy', desc: 'We value your data. Your original URLs and click data are never shared with third parties.' },
+  { icon: <FiShield />, title: 'Reliable', desc: 'Enjoy 99.9% uptime and links that never expire or get flagged as spam.' },
   { icon: <FiSmartphone />, title: 'Devices', desc: 'Compatible with smartphones, tablets and desktop.' },
 ]
 
