@@ -115,43 +115,38 @@ function UrlShorter() {
                       textAlign:'center'
                     }}>Your shorten link is: </span>
 
-                    <InputGroup>
-                      <Form.Control
-                        readOnly
-                        value={shortUrl}
-                        style={{ 
-                          fontSize: 18,
-                          border: 'none',
-                          boxShadow: 'none',
-                          backgroundColor: 'transparent',
-                          textAlign: 'center'
-                        }}
-                      />
+                    <InputGroup style={{
+                      width:'100%', 
+                      justifyContent:'center', 
+                      display:'flex',
+                      gap:10}}>
+                      <a 
+                        href={shortUrl} 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        style={{ fontSize: 24, textAlign: 'center', display: 'block' }}
+                      >
+                        {shortUrl}
+                      </a>
                       <InputGroup.Text
                         onClick={() => navigator.clipboard.writeText(shortUrl).then(() => setCopied(true))}
-                        style={{ cursor: 'pointer', backgroundColor: 'transparent', border: 'none' }}
+                        style={{
+                          cursor: 'pointer', 
+                          backgroundColor: 'transparent', 
+                          border: 'none' }}
                         title="Copy to clipboard"
                       >
-                        {copied ? '✅' : <MdOutlineContentCopy size={20} />}
+                        {copied ? 'Copied! 😊' : <MdOutlineContentCopy size={20} />}
                       </InputGroup.Text>
                     </InputGroup>
-
-                    {/* <a href={shortUrl.startsWith('http') ? shortUrl : `https://${shortUrl}`} 
-                      target="_blank" 
-                      rel="noreferrer" style={{
-                      fontSize:24,
-                      textAlign:'center'
-                    }}> {shortUrl} </a> */}
-
                     
                   </Card>
                 </>)}
-              
 
-              <p style={{
+              {/* <p style={{
                 textAlign:'center', 
                 fontSize:20}}>
-                  Empower your brand with custom-shrunk URLs and smart QR codes that bridge the gap between your physical presence and digital story</p>
+                  Empower your brand with custom-shrunk URLs and smart QR codes that bridge the gap between your physical presence and digital story</p> */}
               </div>
             </div>
             

@@ -117,10 +117,10 @@ function QRGenerator() {
                 </>)}
               
 
-              <p style={{
+              {/* <p style={{
                 textAlign:'center', 
                 fontSize:20}}>
-                  Empower your brand with custom-shrunk URLs and smart QR codes that bridge the gap between your physical presence and digital story</p>
+                  Empower your brand with custom-shrunk URLs and smart QR codes that bridge the gap between your physical presence and digital story</p> */}
               </div>
             </div>
             

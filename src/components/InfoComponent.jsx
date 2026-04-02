@@ -14,15 +14,15 @@ const features = [
 
 function InfoComponent() {
   return (
-    <div style={{ padding: '3rem 0' }}>
+    <div>
 
       {/* Hero Text */}
       <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        <h2 style={{ fontWeight: 700 }}>Simple, fast URL shortener with QR Code generator!</h2>
+        <h2 style={{ fontWeight: 700 }}>Simple, fast URL shortener and QR Code generator!</h2>
         <p style={{ maxWidth: '640px', margin: '1rem auto', color: '#555', lineHeight: '1.7' }}>
           Shorten long links from Instagram, Facebook, YouTube, Twitter, LinkedIn, WhatsApp, TikTok,
           blogs and any domain name. You can also generate a QR code for any URL instantly —
-          both tools work independently or together. Just paste your URL and you're good to go.
+          Just paste your URL and you're good to go.
         </p>
       </div>
 
@@ -39,7 +39,6 @@ function InfoComponent() {
             <h4 style={{ fontWeight: 700 }}>🔗 URL Shortener</h4>
             <p style={{ color: '#555', lineHeight: '1.7', margin: 0 }}>
               Shorten any long URL and share it on sites, chats, and emails.
-              Track how many clicks your link receives with our built-in click counter.
             </p>
           </div>
         </Col>
@@ -53,7 +52,7 @@ function InfoComponent() {
           }}>
             <h4 style={{ fontWeight: 700 }}>📷 QR Code Generator</h4>
             <p style={{ color: '#555', lineHeight: '1.7', margin: 0 }}>
-              Generate a scannable QR code for any URL — shortened or original.
+              Generate a scannable QR code for any URL.
               Perfect for print materials, posters, business cards, and more.
             </p>
           </div>
@@ -68,11 +67,10 @@ function InfoComponent() {
         textAlign: 'center',
         marginBottom: '2rem'
       }}>
-        <h4 style={{ fontWeight: 700 }}>Shorten, share and track</h4>
+        <h4 style={{ fontWeight: 700 }}>Shorten and share</h4>
         <p style={{ color: '#555', maxWidth: '580px', margin: '0.75rem auto', lineHeight: '1.7' }}>
           Your shortened URLs can be used in publications, documents, advertisements, blogs, forums,
-          and instant messages. Generate a QR code from your shortened link for even easier sharing.
-          Monitor your link performance with our click counter.
+          and instant messages. Generate a QR code from your  link for even easier sharing.
         </p>
       </div>
 
